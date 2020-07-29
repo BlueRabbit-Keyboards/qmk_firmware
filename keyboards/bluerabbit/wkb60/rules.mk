@@ -53,3 +53,4 @@ HD44780_ENABLE = no         # Enable support for HD44780 based LCDs (+400)
 
 LAYOUTS = ortho_1x1
 
+SRC += spi_master.c
