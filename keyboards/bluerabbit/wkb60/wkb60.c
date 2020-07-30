@@ -1,5 +1,6 @@
 #include "spi_master.h"
 #include "print.h"
+#include <string.h>
 
 #include "wkb60.h"
 
@@ -24,10 +25,12 @@ void keyboard_pre_init_kb(void) {
 bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
 	// put your per-action keyboard code here
 	// runs for every action, just before processing by the firmware
-    // kcw.kc = keycode;
-    // transmit_to_ble(keycode);
+    kcw.kc = keycode;
 
     if (record->event.pressed){
+        transmit_to_ble(kcw.bytes);
+    } else {
+        memset(kcw.bytes, 0, sizeof(kcw.bytes));
         transmit_to_ble(kcw.bytes);
     }
 
