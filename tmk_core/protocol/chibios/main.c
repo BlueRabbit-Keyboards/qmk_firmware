@@ -166,6 +166,10 @@ int main(void) {
     init_serial_link();
 #endif
 
+#ifdef BLUETOOTH_LINK_ENABLE
+    init_bluetooth_link();
+#endif
+
 #ifdef VISUALIZER_ENABLE
     visualizer_init();
 #endif
@@ -174,7 +178,7 @@ int main(void) {
 
     /* Wait until the USB or serial link is active */
     while (true) {
-#if defined(WAIT_FOR_USB) || defined(SERIAL_LINK_ENABLE)
+#if defined(WAIT_FOR_USB) || defined(SERIAL_LINK_ENABLE) || defined(BLUETOOTH_LINK_ENABLE)
         if (USB_DRIVER.state == USB_ACTIVE) {
             driver = &chibios_driver;
             break;
@@ -189,6 +193,12 @@ int main(void) {
             break;
         }
         serial_link_update();
+#endif
+#ifdef BLUETOOTH_LINK_ENABLE
+        if (is_bluetooth_link_connected()) {
+        	driver = get_bluetooth_link_driver();
+        	break;
+        }
 #endif
         wait_ms(50);
     }
