@@ -60,3 +60,11 @@
 /* Locking resynchronize hack */
 #define LOCKING_RESYNC_ENABLE
 
+
+
+
+#define USE_SPI         
+#define SPI_DRIVER      SPID1
+#define SPI_SCK_PIN     A5
+#define SPI_MOSI_PIN    A7
+#define SPI_MISO_PIN    A6
