@@ -235,6 +235,9 @@ int main(void) {
 #    ifdef SERIAL_LINK_ENABLE
                 serial_link_update();
 #    endif
+#    ifdef BLUETOOTH_LINK_ENABLE
+                bluetooth_link_update();
+#    endif
                 suspend_power_down();  // on AVR this deep sleeps for 15ms
                 /* Remote wakeup */
                 if (suspend_wakeup_condition()) {
