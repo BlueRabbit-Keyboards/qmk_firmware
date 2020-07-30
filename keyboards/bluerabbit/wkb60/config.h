@@ -28,8 +28,8 @@
 #define DESCRIPTION     test board for qmk
 
 /* Pin assignments */
-#define MATRIX_COL_PINS { B0 }
-#define MATRIX_ROW_PINS { B1 }
+#define MATRIX_COL_PINS { B3 }
+#define MATRIX_ROW_PINS { B4 }
 #define UNUSED_PINS
 
 #define BACKLIGHT_PIN           A0
